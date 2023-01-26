@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-
+import useNightMode from './hooks/geceModuAc'
 import Charts from "./components/Charts";
 import Navbar from "./components/Navbar";
+import { useLocalStorage } from "./hooks/localStorageKullan";
 
 const App = () => {
   const [coinData, setCoinData] = useState([]);
-  const [geceModu, setGeceModu] = useState(false);
+  const [geceModu, setGeceModu] = useNightMode(false);
+  localStorage.setItem('kediminAdi','bonjuk');
 
   useEffect(() => {
     axios
